@@ -1,0 +1,39 @@
+package me.zixxx.exampleplugin.command;
+
+import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+public class GameModeSCommand implements CommandExecutor {
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String message, String[] args) {
+
+        /*
+         Make sure to check and see if the sender is console
+         If the sender is console, then cancel the command
+         and send console an error message.
+         */
+
+        if(!(sender instanceof Player)) {
+            sender.sendMessage(ChatColor.RED + "Error: This command is for players only!");
+            return false;
+        }
+
+        /*
+        Check if the player has permission for the command.
+        If they do then update their game mode to survival.
+         */
+        Player player = (Player) sender;
+        if(player.hasPermission("exampleplugin.gamemode.survival")) {
+            player.sendMessage(ChatColor.GOLD + "Your gamemode has been set to " + ChatColor.WHITE + "survival" + ChatColor.GOLD + ".");
+            player.setGameMode(GameMode.SURVIVAL);
+        }else{
+            player.sendMessage(ChatColor.RED + "No permission.");
+            return false;
+        }
+        return true;
+    }
+}

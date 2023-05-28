@@ -1,0 +1,16 @@
+#Use this when creating your plugin.yml
+name: ExamplePlugin
+version: 1.0-EXAMPLE
+main: me.zixxx.exampleplugin.ExamplePlugin
+author: Zixxx
+
+#Make sure to register your commands in here!
+commands:
+  gamemodec:
+    aliases:
+      - gmc
+      - gm1
+  gamemodes:
+    aliases:
+      - gms
+      - gm0
